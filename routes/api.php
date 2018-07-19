@@ -29,9 +29,9 @@ Route::group([
 Route::post('register', 'AuthController@register');
 
 Route::group(['middleware' => 'jwt.auth'], function ($router) {
-    Route::get('users', 'AuthController@all');
-    Route::get('/users/delete/user/{id}', 'AuthController@delete');
-    Route::get('/users/user/{id}', 'AuthController@getUser'); // /users/update/user
-    Route::post('/users/update/user/{id}', 'AuthController@updateUser');
+    Route::get('users', 'UserController@all');
+    Route::get('/users/delete/user/{id}', 'UserController@delete');
+    Route::get('/users/user/{id}', 'UserController@getUser'); // /users/update/user
+    Route::post('/users/update/user/{id}', 'UserController@updateUser');
   
 });

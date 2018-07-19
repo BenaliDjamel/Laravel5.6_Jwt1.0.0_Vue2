@@ -91,10 +91,7 @@ export default {
    computed: {
       errors() {
         return this.$store.getters.RegisterErrors;
-      },
-       users() {
-      return this.$store.getters.getUsers;
-    }
+      }
     }
 };
 </script>

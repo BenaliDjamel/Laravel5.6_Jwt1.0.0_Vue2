@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','register','all','delete','getUser','updateUser']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
     /**
@@ -67,28 +67,7 @@ class AuthController extends Controller
 
     }
 
-    public function all() {
-        $users = User::all();
-        return response()->json(['users'=> $users],200);
-    }
-    public function delete($id) {
-        $user = User::whereId($id)->first();
-        $user->delete();
-        return  response()->json(['user'=> $user],200);
-    }
-
-    public function getUser($id) {
-        return response()->json(['user' => User::whereId($id)->first()],200);
-    } 
-
-    public function updateUser(Request $request, $id)  {
-        $user = User::whereId($id)->first();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
-        return response()->json(['user' =>  User::whereId($id)->first()],200);
-
-    }
+  
 
     /**
      * Get the authenticated User.
